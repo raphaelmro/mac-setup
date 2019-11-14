@@ -27,7 +27,7 @@ email = gets.chomp
 @configurations = {
   name: name,
   email: email,
-  ruby_version: '2.4.0'
+  ruby_version: '2.6.5'
 }
 
 # Question.new("Should I install everything without your confirmation?").
@@ -80,6 +80,7 @@ Installation.new("Git").
       `git config --global user.email "#{@configurations[:email]}`
     }
 
+=begin
 Installation.new("Hub").
   command('brew install hub').
   install!
@@ -91,7 +92,7 @@ Installation.new("Tmux").
 Installation.new("Mosh").
   command('brew install mobile-shell').
   install!
-
+=end
 Installation.new("Postgres").
   command('brew install postgresql --no-python').
   install!
@@ -99,7 +100,7 @@ Installation.new("Postgres").
 Installation.new("Redis").
   command('brew install redis').
   install!
-
+=begin
 Installation.new("Neovim").
   command('brew install neovim/neovim/neovim').
   on(:success) {
@@ -107,7 +108,7 @@ Installation.new("Neovim").
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
   }.
   install!
-
+=end
 Installation.new("ImageMagick").
   command('brew install imagemagick').
   install!
@@ -204,7 +205,7 @@ Installation.new("Grunt").
   command("npm install -g grunt-cli").
   install!
 
-
+=begin
 Installation.new("Erlang").
   command("brew install erlang").
   install!
@@ -212,7 +213,7 @@ Installation.new("Erlang").
 Installation.new("Lua").
   command("brew install lua").
   install!
-
+=end
 Installation.new("Graphviz").
   command("brew install graphviz").
   install!
@@ -220,7 +221,7 @@ Installation.new("Graphviz").
 Installation.new("Etcher").
   command("brew cask install etcher").
   install!
-
+=begin
 Installation.new("Elixir").
     command("brew install elixir").
     on(:success){
@@ -232,7 +233,7 @@ Installation.new("Elixir").
 Installation.new("Phoenix").
     command("mix archive.install https://github.com/phoenixframework/archives/raw/master/phoenix_new.ez").
     install!
-
+=end
 Installation.new("Cask").
   command("
   if brew ls --versions cask > /dev/null; then
@@ -243,7 +244,7 @@ Installation.new("Cask").
   ").
   on(:fail) {abort}.
   install!
-
+=begin
 Installation.new("Cordova").
   command("sudo npm install -g cordova").
   on(:success){
@@ -255,7 +256,7 @@ Installation.new("Cordova").
 Installation.new("Launchrocket").
   command("brew cask install launchrocket").
   install!
-
+=end
 p %{
   /*==============================================
   =            Lets install some apps            =
@@ -266,25 +267,19 @@ p %{
 apps= %w(
   alfred
   appcleaner
-  atom
   camtwist
   docker
   dropbox
   github-desktop
-  google-chrome
   hammerspoon
-  iterm2
+  hyper
   karabiner-elements
-  macvim
   obs
-  screenhero
   skype
   slack
   spectacle
   spotify
-  sublime-text
   postico
-  whatsapp
   zoom
 )
 
@@ -303,7 +298,7 @@ end
 
 @custom_installations.each(&:install!)
 
-
+=begin
 # Atom
 p %{
   /*============================================
@@ -352,7 +347,7 @@ p %{
   command("apm install #{atom_packages.join(' ')}").
   on(:fail) { puts "Atom not installed" }.
   install!
-
+=end
 p %{
   /*============================================
   =            now some fonts... :)            =
